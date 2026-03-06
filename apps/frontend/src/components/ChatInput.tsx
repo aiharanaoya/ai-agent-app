@@ -4,7 +4,7 @@ import { Input } from "./ui/input";
 
 type Props = {
   value: string;
-  onChange: (v: string) => void;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   onSend: () => void;
   loading: boolean;
 };
@@ -22,7 +22,7 @@ export function ChatInput({ value, onChange, onSend, loading }: Props) {
       <div className="flex gap-2">
         <Input
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={onChange}
           onKeyDown={handleKeyDown}
           placeholder='例：「牛乳をタスクに追加して」'
           disabled={loading}

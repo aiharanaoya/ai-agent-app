@@ -1,10 +1,5 @@
+import type { Message } from "@ai-sdk/react";
 import { cn } from "./ui/utils";
-
-type Message = {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-};
 
 export function MessageBubble({ msg }: { msg: Message }) {
   const isUser = msg.role === "user";

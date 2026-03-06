@@ -9,23 +9,17 @@ const app = new Hono()
 app.use('*', cors({ origin: 'http://localhost:5173' }))
 
 app.post('/api/chat', async (c) => {
-  const { message, history = [] } = await c.req.json<{
-    message: string
-    history: { role: 'user' | 'assistant'; content: string }[]
+  const { messages } = await c.req.json<{
+    messages: Parameters<typeof myAgent.stream>[0]
   }>()
 
-  const messages = [
-    ...history.map((m) => ({ role: m.role, content: m.content })),
-    { role: 'user' as const, content: message },
-  ]
-
-  try {
-    const result = await myAgent.generate(messages)
-    return c.json({ text: result.text })
-  } catch (err) {
-    const message = err instanceof Error ? err.message : String(err)
-    return c.json({ error: message }, 500)
-  }
+  const result = await myAgent.stream(messages)
+  return new Response(result.textStream as unknown as BodyInit, {
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Transfer-Encoding': 'chunked',
+    },
+  })
 })
 
 app.get('/api/tasks', (c) => {

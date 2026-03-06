@@ -4,9 +4,9 @@ import { addTask, listTasks, completeTask, deleteTask } from './tasks.js'
 
 export const addTaskTool = createTool({
   id: 'addTask',
-  description: 'タスクを追加する',
+  description: 'タスクを追加する。ユーザーの発言から追加すべき対象を抽出してタイトルにする（例：「牛乳を追加して」→「牛乳」）',
   inputSchema: z.object({
-    title: z.string().describe('タスクのタイトル'),
+    title: z.string().describe('タスクのタイトル。ユーザーの発言そのままではなく、タスクの内容を簡潔に表した名詞や短いフレーズにする'),
   }),
   execute: async (inputData) => {
     const task = addTask(inputData.title)

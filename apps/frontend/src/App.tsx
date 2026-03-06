@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
+import { useChat } from '@ai-sdk/react'
 import { AppHeader } from './components/AppHeader'
 import { ChatPanel } from './components/ChatPanel'
 import { TaskPanel } from './components/TaskPanel'
@@ -9,29 +10,10 @@ type Task = {
   done: boolean
 }
 
-type Message = {
-  id: string
-  role: 'user' | 'assistant'
-  content: string
-}
-
 const API = 'http://localhost:3000'
 
-function generateId() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2, 5)
-}
-
 export default function App() {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 'init',
-      role: 'assistant',
-      content: 'こんにちは！タスク管理をお手伝いします。「牛乳を追加して」などと話しかけてください。',
-    },
-  ])
   const [tasks, setTasks] = useState<Task[]>([])
-  const [input, setInput] = useState('')
-  const [loading, setLoading] = useState(false)
 
   const fetchTasks = async () => {
     try {
@@ -39,7 +21,7 @@ export default function App() {
       const data = await res.json()
       setTasks(data.tasks)
     } catch {
-      // backend may not be running
+      console.error('Failed to fetch tasks')
     }
   }
 
@@ -47,37 +29,18 @@ export default function App() {
     fetchTasks()
   }, [])
 
-  const send = useCallback(async () => {
-    if (!input.trim() || loading) return
-    const userMessage = input.trim()
-    const userMsg: Message = { id: generateId(), role: 'user', content: userMessage }
-    const nextMessages = [...messages, userMsg]
-    setMessages(nextMessages)
-    setInput('')
-    setLoading(true)
-
-    try {
-      const res = await fetch(`${API}/api/chat`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: userMessage,
-          history: messages,
-        }),
-      })
-      const data = await res.json()
-      const text = data.text ?? `エラー: ${data.error ?? '不明なエラー'}`
-      setMessages([...nextMessages, { id: generateId(), role: 'assistant', content: text }])
-      await fetchTasks()
-    } catch (err) {
-      setMessages([
-        ...nextMessages,
-        { id: generateId(), role: 'assistant', content: 'サーバーに接続できませんでした。' },
-      ])
-    } finally {
-      setLoading(false)
-    }
-  }, [input, loading, messages])
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+    api: `${API}/api/chat`,
+    streamProtocol: 'text',
+    initialMessages: [
+      {
+        id: 'init',
+        role: 'assistant',
+        content: 'こんにちは！タスク管理をお手伝いします。「牛乳を追加して」などと話しかけてください。',
+      },
+    ],
+    onFinish: () => fetchTasks(),
+  })
 
   return (
     <div className="flex flex-col h-screen bg-background">
@@ -85,10 +48,10 @@ export default function App() {
       <div className="flex flex-1 overflow-hidden">
         <ChatPanel
           messages={messages}
-          loading={loading}
+          loading={isLoading}
           input={input}
-          onInputChange={setInput}
-          onSend={send}
+          onInputChange={handleInputChange}
+          onSend={handleSubmit}
         />
         <TaskPanel tasks={tasks} />
       </div>
