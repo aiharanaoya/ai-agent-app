@@ -1,20 +1,15 @@
 import { useRef, useEffect } from "react";
+import type { Message } from "@ai-sdk/react";
 import { ScrollArea } from "./ui/scroll-area";
 import { MessageBubble } from "./MessageBubble";
 import { ThinkingBubble } from "./ThinkingBubble";
 import { ChatInput } from "./ChatInput";
 
-type Message = {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-};
-
 type Props = {
   messages: Message[];
   loading: boolean;
   input: string;
-  onInputChange: (v: string) => void;
+  onInputChange: React.ChangeEventHandler<HTMLInputElement>;
   onSend: () => void;
 };
 
