@@ -1,0 +1,14 @@
+{
+  "name": "ai-agent-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.30.3",
+  "workspaces": [
+    "apps/backend",
+    "apps/frontend"
+  ],
+  "scripts": {
+    "dev": "pnpm --parallel --stream --filter './apps/**' run dev"
+  }
+}
