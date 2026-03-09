@@ -1,14 +1,19 @@
 {
-  "name": "ai-agent-app",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "packageManager": "pnpm@10.30.3",
-  "workspaces": [
-    "apps/backend",
-    "apps/frontend"
-  ],
-  "scripts": {
-    "dev": "pnpm --parallel --stream --filter './apps/**' run dev"
-  }
+	"name": "ai-agent-app",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"packageManager": "pnpm@10.30.3",
+	"workspaces": [
+		"apps/backend",
+		"apps/frontend"
+	],
+	"scripts": {
+		"dev": "pnpm --parallel --stream --filter './apps/**' run dev",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write ."
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.6"
+	}
 }
