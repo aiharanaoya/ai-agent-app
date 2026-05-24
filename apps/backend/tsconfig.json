@@ -1,4 +1,12 @@
 {
 	"extends": "../../tsconfig.json",
-	"include": ["src"]
+	"compilerOptions": {
+		"types": ["@types/node"],
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		},
+		"ignoreDeprecations": "6.0"
+	},
+	"include": ["src", "worker-configuration.d.ts"]
 }

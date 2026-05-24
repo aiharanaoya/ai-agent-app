@@ -1,7 +1,16 @@
 managePackageManagerVersions: true
 saveExact: true
-minimumReleaseAge: 1440
+registries:
+  '@aiharanaoya': https://npm.pkg.github.com/
 packages:
   - 'apps/*'
 catalog:
   typescript: "6.0.3"
+allowedDeprecatedVersions:
+  glob: "*"
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - '@aiharanaoya/ui@0.2.0'
