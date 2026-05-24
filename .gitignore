@@ -1,3 +1,10 @@
 node_modules/
 dist/
 .env
+.env.local
+.dev.vars
+.DS_Store
+
+apps/backend/worker-configuration.d.ts
+apps/backend/.wrangler/
+apps/backend/bruno/

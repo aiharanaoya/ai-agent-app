@@ -1,5 +1,5 @@
 {
-	"name": "ai-agent-app",
+	"name": "daily-briefing",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -10,6 +10,8 @@
 	],
 	"scripts": {
 		"dev": "pnpm --parallel --stream --filter './apps/**' run dev",
+		"typecheck": "pnpm --filter './apps/**' run typecheck",
+		"build": "pnpm --filter '@daily-briefing/frontend' run build",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write ."
 	},

@@ -1,0 +1,13 @@
+name = "daily-briefing-worker"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "daily-briefing"
+database_id = "c79d49ec-f3f0-43ba-a347-16afd817772f"
+migrations_dir = "migrations"
+
+[triggers]
+crons = ["0 23 * * *"]

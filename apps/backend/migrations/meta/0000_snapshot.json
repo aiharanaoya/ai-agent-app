@@ -1,0 +1,171 @@
+{
+	"version": "6",
+	"dialect": "sqlite",
+	"id": "a8cc149c-5f9b-46df-a4c9-ef8a5cb4276e",
+	"prevId": "00000000-0000-0000-0000-000000000000",
+	"tables": {
+		"articles": {
+			"name": "articles",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "text",
+					"primaryKey": true,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"url": {
+					"name": "url",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"title": {
+					"name": "title",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"description": {
+					"name": "description",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false
+				},
+				"source": {
+					"name": "source",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"category": {
+					"name": "category",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"published_at": {
+					"name": "published_at",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false
+				},
+				"fetched_at": {
+					"name": "fetched_at",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"status": {
+					"name": "status",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false,
+					"default": "'pending'"
+				},
+				"summary_ja": {
+					"name": "summary_ja",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"autoincrement": false
+				}
+			},
+			"indexes": {
+				"articles_url_unique": {
+					"name": "articles_url_unique",
+					"columns": ["url"],
+					"isUnique": true
+				},
+				"idx_articles_status": {
+					"name": "idx_articles_status",
+					"columns": ["status"],
+					"isUnique": false
+				},
+				"idx_articles_category": {
+					"name": "idx_articles_category",
+					"columns": ["category"],
+					"isUnique": false
+				},
+				"idx_articles_fetched": {
+					"name": "idx_articles_fetched",
+					"columns": ["fetched_at"],
+					"isUnique": false
+				}
+			},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"checkConstraints": {}
+		},
+		"digests": {
+			"name": "digests",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "integer",
+					"primaryKey": true,
+					"notNull": true,
+					"autoincrement": true
+				},
+				"date": {
+					"name": "date",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"category": {
+					"name": "category",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"digest_ja": {
+					"name": "digest_ja",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				}
+			},
+			"indexes": {
+				"uq_digests_date_category": {
+					"name": "uq_digests_date_category",
+					"columns": ["date", "category"],
+					"isUnique": true
+				}
+			},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"checkConstraints": {}
+		}
+	},
+	"views": {},
+	"enums": {},
+	"_meta": {
+		"schemas": {},
+		"tables": {},
+		"columns": {}
+	},
+	"internal": {
+		"indexes": {}
+	}
+}

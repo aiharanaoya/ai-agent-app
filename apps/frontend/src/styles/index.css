@@ -1,0 +1,42 @@
+@import "@aiharanaoya/ui/styles";
+@import "tailwindcss";
+
+@theme inline {
+	--font-display: var(--font-display);
+	--font-sans: var(--font-sans);
+}
+
+:root {
+	--color-fg-primary: var(--color-gray-900);
+	--color-fg-secondary: var(--color-gray-600);
+	--color-fg-muted: var(--color-gray-400);
+	--color-bg-subtle: var(--color-gray-50);
+	--color-border: var(--color-gray-200);
+}
+
+body {
+	background-color: var(--color-bg-subtle);
+	font-family: var(--font-sans);
+	margin: 0;
+}
+
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.4;
+	}
+}

@@ -1,31 +1,27 @@
-import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
-import { myAgent } from './agent.js';
-import { listTasks } from './tasks.js';
+import { feedRoutes } from './routes/feed.js';
+import { pipelineRoutes } from './routes/pipeline.js';
+import { collectArticles } from './services/collect.js';
+import { generateDigests } from './services/digest.js';
+import { summarizeArticles } from './services/summarize.js';
+import type { Env } from './types.js';
 
-const app = new Hono();
+const app = new Hono<{ Bindings: Env }>();
 
-app.use('*', cors({ origin: 'http://localhost:5173' }));
+app.use('*', cors({ origin: '*' }));
 
-app.post('/api/chat', async (c) => {
-	const { messages } = await c.req.json<{
-		messages: Parameters<typeof myAgent.stream>[0];
-	}>();
+app.route('/api/feed', feedRoutes);
+app.route('/api/run', pipelineRoutes);
 
-	const result = await myAgent.stream(messages);
-	return new Response(result.textStream as unknown as BodyInit, {
-		headers: {
-			'Content-Type': 'text/plain; charset=utf-8',
-			'Transfer-Encoding': 'chunked',
-		},
-	});
-});
+// Cronハンドラ（毎朝8時JST = 23:00 UTC）
+const scheduled: ExportedHandlerScheduledHandler<Env> = async (_event, env) => {
+	await collectArticles(env);
+	await summarizeArticles(env);
+	await generateDigests(env);
+};
 
-app.get('/api/tasks', (c) => {
-	return c.json({ tasks: listTasks() });
-});
-
-serve({ fetch: app.fetch, port: 3000 }, () => {
-	console.log('Backend running on http://localhost:3000');
-});
+export default {
+	fetch: app.fetch,
+	scheduled,
+};
