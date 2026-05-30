@@ -22,7 +22,7 @@ export const ArticleRow: FC<Props> = ({ article, index }) => {
 			</span>
 
 			<span className="text-sm font-medium leading-snug text-gray-800">
-				{article.title}
+				{article.titleJa ?? article.title}
 			</span>
 
 			<span className="whitespace-nowrap rounded-full border border-gray-200 bg-white px-2.5 py-[3px] text-xs font-semibold text-gray-600">
