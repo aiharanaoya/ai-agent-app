@@ -39,10 +39,6 @@ export const SectionCard: FC<Props> = ({ section, index }) => (
 				</span>
 			</div>
 
-			<div className="px-6 py-5 text-base leading-relaxed text-gray-600">
-				{section.digest}
-			</div>
-
 			<div className="divide-y divide-gray-100 border-t border-gray-100 bg-gray-50">
 				{section.articles.map((article, i) => (
 					<ArticleRow key={article.id} article={article} index={i} />

@@ -1,7 +1,7 @@
 import { desc } from 'drizzle-orm';
 import { Hono } from 'hono';
 import { createDb } from '@/db/index.js';
-import { digests } from '@/db/schema.js';
+import { articles } from '@/db/schema.js';
 import { buildFeed } from '@/services/feed.js';
 import type { Env } from '@/types.js';
 
@@ -10,18 +10,18 @@ export const feedRoutes = new Hono<{ Bindings: Env }>();
 feedRoutes.get('/latest', async (c) => {
 	const db = createDb(c.env.DB);
 
-	// digestsテーブルの最新日付を基準に「今日のフィード」を返す
 	const latest = await db
-		.select({ date: digests.date })
-		.from(digests)
-		.orderBy(desc(digests.date))
+		.select({ fetchedAt: articles.fetchedAt })
+		.from(articles)
+		.orderBy(desc(articles.fetchedAt))
 		.limit(1);
 
 	if (!latest[0]) {
 		return c.json({ error: 'No feed available yet' }, 404);
 	}
 
-	const feed = await buildFeed(db, latest[0].date);
+	const date = latest[0].fetchedAt.slice(0, 10);
+	const feed = await buildFeed(db, date);
 	return c.json(feed);
 });
 
