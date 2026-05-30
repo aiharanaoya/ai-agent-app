@@ -1,8 +1,4 @@
-import {
-	index,
-	sqliteTable,
-	text,
-} from 'drizzle-orm/sqlite-core';
+import { index, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const articles = sqliteTable(
 	'articles',
@@ -24,4 +20,3 @@ export const articles = sqliteTable(
 		index('idx_articles_fetched').on(t.fetchedAt),
 	],
 );
-

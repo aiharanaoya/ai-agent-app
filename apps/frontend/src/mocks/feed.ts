@@ -53,8 +53,10 @@ export const MOCK_FEED: DailyFeed = {
 			articles: [
 				{
 					id: 'a1',
-					title: 'Claude 4 Announced — Benchmark Results Beat GPT-5 on Coding Tasks',
-					titleJa: 'Claude 4発表——コーディング精度でGPT-5を上回るベンチマーク結果',
+					title:
+						'Claude 4 Announced — Benchmark Results Beat GPT-5 on Coding Tasks',
+					titleJa:
+						'Claude 4発表——コーディング精度でGPT-5を上回るベンチマーク結果',
 					url: 'https://example.com/a1',
 					source: 'TechCrunch AI',
 				},
@@ -67,8 +69,10 @@ export const MOCK_FEED: DailyFeed = {
 				},
 				{
 					id: 'a3',
-					title: 'Google Project Astra Japanese Demo Shows Real-Time Video Analysis',
-					titleJa: 'Google「Project Astra」日本語対応デモ——リアルタイム映像解析を披露',
+					title:
+						'Google Project Astra Japanese Demo Shows Real-Time Video Analysis',
+					titleJa:
+						'Google「Project Astra」日本語対応デモ——リアルタイム映像解析を披露',
 					url: 'https://example.com/a3',
 					source: 'The Batch',
 				},
@@ -102,7 +106,8 @@ export const MOCK_FEED: DailyFeed = {
 				},
 				{
 					id: 'e3',
-					title: '東証プライム時価総額が過去最高更新——外国人投資家の買い越し継続',
+					title:
+						'東証プライム時価総額が過去最高更新——外国人投資家の買い越し継続',
 					titleJa: null,
 					url: 'https://example.com/e3',
 					source: '日経',

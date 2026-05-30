@@ -17,7 +17,13 @@ export const buildFeed = async (db: Db, date: string): Promise<DailyFeed> => {
 				source: articles.source,
 			})
 			.from(articles)
-			.where(and(eq(articles.category, key), eq(articles.status, 'translated'), like(articles.fetchedAt, `${date}%`)))
+			.where(
+				and(
+					eq(articles.category, key),
+					eq(articles.status, 'translated'),
+					like(articles.fetchedAt, `${date}%`),
+				),
+			)
 			.orderBy(desc(articles.fetchedAt))
 			.limit(7);
 
