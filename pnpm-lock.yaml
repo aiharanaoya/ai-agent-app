@@ -27,8 +27,8 @@ importers:
         specifier: 0.45.2
         version: 0.45.2
       hono:
-        specifier: 4.12.24
-        version: 4.12.24
+        specifier: 4.12.25
+        version: 4.12.25
     devDependencies:
       '@types/node':
         specifier: 25.9.2
@@ -1678,8 +1678,8 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  hono@4.12.24:
-    resolution: {integrity: sha512-I36D1s+HgQc55KbhEr4iybfxv/9o1zdpw+XEM6dJa91LqQD0HCoSGdxpRJCZE+aavs87j4V3Ls2OJzq8C/U4iw==}
+  hono@4.12.25:
+    resolution: {integrity: sha512-2NFaIyNVgJmBs/ecmtGzlmluTFs5cHEWGTdu0t1HBwYzoGXOL5nUQBRMXsXWla5i4KkG//QMzVP88m1+I3fdAQ==}
     engines: {node: '>=16.9.0'}
 
   https-proxy-agent@7.0.6:
@@ -3217,7 +3217,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  hono@4.12.24: {}
+  hono@4.12.25: {}
 
   https-proxy-agent@7.0.6:
     dependencies:
