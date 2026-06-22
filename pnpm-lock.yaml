@@ -21,8 +21,8 @@ importers:
   apps/backend:
     dependencies:
       '@google/genai':
-        specifier: 2.8.0
-        version: 2.8.0
+        specifier: 2.9.0
+        version: 2.9.0
       drizzle-orm:
         specifier: 0.45.2
         version: 0.45.2
@@ -732,8 +732,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@google/genai@2.8.0':
-    resolution: {integrity: sha512-pc2ayxqO5+O7AvnHBqpNHIk7PAZkHZgL31tbyx0gJZBSS9qPYiQoqwK7oYOw/ePmG6QY4EMSu+304vD5QlhXAw==}
+  '@google/genai@2.9.0':
+    resolution: {integrity: sha512-3DRdSJ0LaKFig3FNGeRDn9BQxtjZm2qr0hNH2d771LKcG0HvUYddlN0LPdSp8XU7Ekb04i9q3+tt64uYqavUdw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@modelcontextprotocol/sdk': ^1.25.2
@@ -1878,18 +1878,6 @@ packages:
       '@cloudflare/workers-types':
         optional: true
 
-  ws@8.20.1:
-    resolution: {integrity: sha512-It4dO0K5v//JtTXuPkfEOaI3uUN87iYPnqo/ZzqCoG3g8uhA66QUMs/SrM0YK7/NAu+r4LMh/9dq2A7k+rHs+w==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: '>=5.0.2'
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-
   ws@8.21.0:
     resolution: {integrity: sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g==}
     engines: {node: '>=10.0.0'}
@@ -2333,12 +2321,12 @@ snapshots:
   '@esbuild/win32-x64@0.28.1':
     optional: true
 
-  '@google/genai@2.8.0':
+  '@google/genai@2.9.0':
     dependencies:
       google-auth-library: 10.6.2
       p-retry: 4.6.2
       protobufjs: 7.6.1
-      ws: 8.20.1
+      ws: 8.21.0
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -3286,8 +3274,6 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
-
-  ws@8.20.1: {}
 
   ws@8.21.0: {}
 
