@@ -9,7 +9,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@aiharanaoya/ui": "0.2.0",
+		"@aiharanaoya/ui": "0.2.1",
 		"@tanstack/react-query": "5.101.2",
 		"@tanstack/react-router": "1.170.18",
 		"date-fns": "4.4.0",
