@@ -21,8 +21,8 @@ importers:
   apps/backend:
     dependencies:
       '@google/genai':
-        specifier: 2.13.0
-        version: 2.13.0(supports-color@10.2.2)
+        specifier: 2.14.0
+        version: 2.14.0(supports-color@10.2.2)
       drizzle-orm:
         specifier: 0.45.2
         version: 0.45.2
@@ -732,8 +732,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@google/genai@2.13.0':
-    resolution: {integrity: sha512-GM7C8Kaomvjz05x5JEO6+l3d/pciL9LxAG9dUjJLD7nTPZ9X0Cfsf2Z7eET6UjgWyUmxXCHtYnQoQ77F9+ZIOQ==}
+  '@google/genai@2.14.0':
+    resolution: {integrity: sha512-pRsFFPYhDARkVlzC4iSAb7Oj83HZJCjM5cVabvAl3Su/6464ULo6JOAqJiZqbD+H2d7DfT78zvXbtxJa1+KYdg==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@modelcontextprotocol/sdk': ^1.25.2
@@ -2330,7 +2330,7 @@ snapshots:
   '@esbuild/win32-x64@0.28.1':
     optional: true
 
-  '@google/genai@2.13.0(supports-color@10.2.2)':
+  '@google/genai@2.14.0(supports-color@10.2.2)':
     dependencies:
       google-auth-library: 10.6.2(supports-color@10.2.2)
       p-retry: 4.6.2
